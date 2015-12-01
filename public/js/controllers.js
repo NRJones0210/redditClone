@@ -1,7 +1,7 @@
 app.controller('redditController', function($scope) {
 
   $scope.showPostForm = function() {
-    $scope.newPostForm.visable = ($scope.newPostForm.visable === true) ? false : true
+    $scope.newPostForm.visible = ($scope.newPostForm.visible === true) ? false : true
   }
 
   $scope.posts = [];
@@ -20,5 +20,5 @@ app.controller('redditController', function($scope) {
     $scope.newPostForm.visible = false;
     console.log($scope.posts)
   };
-  
+
 })

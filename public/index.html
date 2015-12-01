@@ -45,7 +45,7 @@
       <div class='row'>
         <div class='col-md-1'></div>
         <div class='col-md-10'>
-          <form name='newPostForm' id='newPostForm' ng-model='newPostForm' ng-show="newPostForm.visable" ng-submit="addPost()">
+          <form name='newPostForm' id='newPostForm' ng-model='newPostForm' ng-show="newPostForm.visible" ng-submit="addPost()">
             <div class="form-group" ng-class="{ 'has-error' : newPost.title.$invalid && !newPost.title.$pristine }">
                 <label>Title</label>
                 <input type="text" name="title" class="form-control" ng-model="newPost.title" required autofocus>
