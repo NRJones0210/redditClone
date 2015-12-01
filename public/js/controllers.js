@@ -55,4 +55,10 @@ app.controller('redditController', function($scope) {
     console.log($scope.posts)
   };
 
+  $scope.upvote = function() {
+    this.post.voteCount++;
+  };
+  $scope.downvote = function() {
+    this.post.voteCount--;
+  };
 })
