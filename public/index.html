@@ -73,6 +73,53 @@
         </div>
       </div>
     </div>
+    <!-- DISPLAY POSTS -->
+    <div class='container'>
+      <div ng-repeat='post in posts'>
+        <div class='row well'>
+          <div class='col-md-2'>
+            <img src="{{post.image}}">
+          </div>
+          <div class='col-md-10'>
+            <div class='row'><strong>{{post.title}} | 
+              <span><i class="fa fa-arrow-up"></i></span>
+              <span><i class="fa fa-arrow-down"></i></span>
+              <span>{{post.voteCount}}</span></strong>
+            </div>
+            <div class='row text-right'>By: {{post.author}}</div>
+            <div class='row'>{{post.description}}</div>
+            <div class='row'>
+              <span><i class="fa fa-calendar"></i> {{post.date | date:'medium'}}</span>
+              | 
+              <span><i class="fa fa-comment"></i> 
+                <ng-pluralize count="post.comments.length"
+                  when="{'1': '{{post.comments.length}} comment',
+                         'other': '{{post.comments.length}} comments'}"></ng-pluralize></span> 
+              | 
+              <span><i class="fa fa-pencil"></i> Add Comment</span>
+            </div>
+            <!-- POST VIEW COMMENTS -->
+            <div class='row' name='viewComments' id='viewComments' ng-model='viewComments'>
+              <br>
+              <div ng-repeat='comment in post.comments'>
+                <p><strong>{{comment.name}}</strong> - {{comment.text}}</p>
+              </div>
+            </div>
+            <!-- POST ADD COMMENT FORM -->
+            <div class='row' name='postComment' id='postComment' ng-model='postComment'>
+              <br>
+              <form name='newCommentForm' id='newCommentForm' ng-model='newCommentForm' ng-submit="addComment()">
+                <div>
+                  <h5>Name <input type='text' name='name' ng-model='newComment.name' placeholder='name'>
+                  Text <input type='text' name='text' ng-model='newComment.text' placeholder='text'>
+                  <input type='submit' value='Add Comment'></h5>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
