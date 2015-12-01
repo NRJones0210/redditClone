@@ -84,7 +84,7 @@
             <div class='row'><strong>{{post.title}} | 
               <span ng-click='upvote()'><i class="fa fa-arrow-up"></i></span>
               <span ng-click='downvote()'><i class="fa fa-arrow-down"></i></span>
-              <span>{{post.voteCount}}</span></strong>
+              <span ng-class="{votePositive: post.voteCount > 0, voteNegative: post.voteCount < 0}">{{post.voteCount}}</span></strong>
             </div>
             <div class='row text-right'>By: {{post.author}}</div>
             <div class='row'>{{post.description}}</div>

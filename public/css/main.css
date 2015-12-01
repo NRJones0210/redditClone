@@ -1,3 +1,9 @@
 img {
   width: 100%;
 }
+.votePositive {
+  color: green;
+}
+.voteNegative {
+  color: red;
+}
