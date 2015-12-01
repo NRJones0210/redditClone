@@ -3,6 +3,12 @@ app.controller('redditController', function($scope) {
   $scope.showPostForm = function() {
     $scope.newPostForm.visible = ($scope.newPostForm.visible === true) ? false : true
   }
+  $scope.showComments = function() {
+    this.viewComments = (this.viewComments === true) ? false : true
+  }
+  $scope.showCommentForm = function() {
+    this.viewCommentForm = (this.viewCommentForm === true) ? false : true
+  }
 
   $scope.posts = [
     {

@@ -91,22 +91,22 @@
             <div class='row'>
               <span><i class="fa fa-calendar"></i> {{post.date | date:'medium'}}</span>
               | 
-              <span><i class="fa fa-comment"></i> 
+              <span ng-click="showComments()"><i class="fa fa-comment"></i> 
                 <ng-pluralize count="post.comments.length"
                   when="{'1': '{{post.comments.length}} comment',
                          'other': '{{post.comments.length}} comments'}"></ng-pluralize></span> 
               | 
-              <span><i class="fa fa-pencil"></i> Add Comment</span>
+              <span ng-click="showCommentForm()"><i class="fa fa-pencil"></i> Add Comment</span>
             </div>
             <!-- POST VIEW COMMENTS -->
-            <div class='row' name='viewComments' id='viewComments' ng-model='viewComments'>
+            <div class='row' name='viewComments' id='viewComments' ng-model='viewComments' ng-show="viewComments">
               <br>
               <div ng-repeat='comment in post.comments'>
                 <p><strong>{{comment.name}}</strong> - {{comment.text}}</p>
               </div>
             </div>
             <!-- POST ADD COMMENT FORM -->
-            <div class='row' name='postComment' id='postComment' ng-model='postComment'>
+            <div class='row' name='postComment' id='postComment' ng-model='postComment' ng-show="viewCommentForm">
               <br>
               <form name='newCommentForm' id='newCommentForm' ng-model='newCommentForm' ng-submit="addComment()">
                 <div>
