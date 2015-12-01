@@ -61,6 +61,14 @@ app.controller('redditController', function($scope) {
     console.log($scope.posts)
   };
 
+  $scope.addComment = function() {
+    this.post.comments.push({
+      name: this.newComment.name,
+      text: this.newComment.text,
+    })
+    this.newComment = {};
+  };
+
   $scope.upvote = function() {
     this.post.voteCount++;
   };
