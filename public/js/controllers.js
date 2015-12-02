@@ -1,11 +1,43 @@
 app.controller('redditController', function($scope) {
 
+  $scope.addPost = function() {
+    $scope.posts.push({
+      title: $scope.newPost.title,
+      author: $scope.newPost.author,
+      image: $scope.newPost.image,
+      description: $scope.newPost.description,
+      voteCount: 0,
+      date: Date.now(),
+      comments: []
+    })
+    $scope.newPost = {};
+    $scope.newPostForm.visible = false;
+    console.log($scope.posts)
+  };
+
+  $scope.upvote = function() {
+    this.post.voteCount++;
+  };
+
+  $scope.downvote = function() {
+    this.post.voteCount--;
+  };
+
   $scope.showComments = function() {
     this.viewComments = (this.viewComments === true) ? false : true
-  }
+  };
+
   $scope.showCommentForm = function() {
     this.viewCommentForm = (this.viewCommentForm === true) ? false : true
-  }
+  };
+
+  $scope.addComment = function() {
+    this.post.comments.push({
+      name: this.newComment.name,
+      text: this.newComment.text,
+    })
+    this.newComment = {};
+  };
 
   $scope.posts = [
     {
@@ -24,7 +56,7 @@ app.controller('redditController', function($scope) {
       title: 'Machu Picchu',
       author: 'Peter Parker',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-Xp840XjBUfd7fPfOz6ZDJ9SvRersSIVC5pJORU8K6g9IKkrr',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed dignissim augue. Maecenas eleifend, leo eu congue cursus, augue mauris iaculis justo, at tincidunt arcu arcu ac dolor. Sed varius ac est sit amet molestie. Nunc ullamcorper, massa quis gravida ullamcorper, ipsum nulla vehicula augue',
+      description: 'Tempor euismod potenti in, arcu praesent eget. Rutrum tempora dictum,',
       voteCount: 10,
       date: 1447111652624,
       comments:[
@@ -34,7 +66,7 @@ app.controller('redditController', function($scope) {
       title: 'Na Pali Coast',
       author: 'Bruce Wayne',
       image: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRnU9veYBtbEWv5_3pTTnTHkmwjjg5d463861_73Ybhx4nKHlZKrg',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed dignissim augue. Maecenas eleifend, leo eu congue cursus, augue mauris iaculis justo, at tincidunt arcu arcu ac dolor. Sed varius ac est sit amet molestie. Nunc ullamcorper, massa quis gravida ullamcorper, ipsum nulla vehicula augue',
+      description: 'Magna dictum vulputate ac tincidunt. Nunc venenatis pellentesque elementum eget. Nec cras venenatis, phasellus habitant et faucibus, massa donec, vehicula arcu nec erat maecenas ut justo. Dolor erat tristique lacus eget, curabitur dolor eget dolor sociosqu, non scelerisque at. Et vel mi, malesuada wisi libero Magna dictum vulputate ac tincidunt. Nunc venenatis pellentesque elementum eget. Nec cras venenatis, phasellus habitant et faucibus, massa donec, vehicula arcu nec erat maecenas ut justo. Dolor erat tristique lacus eget, curabitur dolor eget dolor sociosqu, non scelerisque at. Et vel mi, malesuada wisi libero',
       voteCount: 7,
       date: 1440111652624,
       comments:[
@@ -42,34 +74,4 @@ app.controller('redditController', function($scope) {
       ]
     },
   ];
-
-  $scope.addPost = function() {
-    $scope.posts.push({
-      title: $scope.newPost.title,
-      author: $scope.newPost.author,
-      image: $scope.newPost.image,
-      description: $scope.newPost.description,
-      voteCount: 0,
-      date: Date.now(),
-      comments: []
-    })
-    $scope.newPost = {};
-    $scope.newPostForm.visible = false;
-    console.log($scope.posts)
-  };
-
-  $scope.addComment = function() {
-    this.post.comments.push({
-      name: this.newComment.name,
-      text: this.newComment.text,
-    })
-    this.newComment = {};
-  };
-
-  $scope.upvote = function() {
-    this.post.voteCount++;
-  };
-  $scope.downvote = function() {
-    this.post.voteCount--;
-  };
 })
